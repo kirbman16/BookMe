@@ -11,7 +11,12 @@ namespace Data
     public class Repository<T> : IRepository<T> where T : BaseEntity
     {
         #region Properties
-        private IDbSet<T> Entities => _entities ?? (_entities = _context.Set<T>());
+        private IDbSet<T> Entities {
+            get
+            {
+                return _entities ?? (_entities = _context.Set<T>());
+            }
+        }
         private readonly AppContext _context;
         private IDbSet<T> _entities;
         #endregion
@@ -29,7 +34,11 @@ namespace Data
             try
             {
                 if (entity == null)
-                    throw new ArgumentNullException(nameof(entity));
+                {
+                    throw new Exception("There was an error");
+                    //throw new ArgumentNullException(nameof(entity));
+                }
+                    
 
                 Entities.Remove(entity);
                 _context.SaveChanges();
@@ -38,8 +47,8 @@ namespace Data
             {
                 var msg = dbEx.EntityValidationErrors.Aggregate(string.Empty, (current1, validationErrors) =>
                     validationErrors.ValidationErrors.Aggregate(current1, (current, validationError) =>
-                    current + (Environment.NewLine + $"Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}")));
-
+                    current + (Environment.NewLine + "Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage)));
+                    
                 var fail = new Exception(msg, dbEx);
                 throw fail;
             }
@@ -60,7 +69,11 @@ namespace Data
             try
             {
                 if (entity == null)
-                    throw new ArgumentNullException(nameof(entity));
+                {
+                    throw new Exception("There was an error");
+                    //throw new ArgumentNullException(nameof(entity));
+                }
+                    
 
                 Entities.Add(entity);
 
@@ -70,23 +83,39 @@ namespace Data
             {
                 var msg = dbEx.EntityValidationErrors.Aggregate(string.Empty, (current1, validationErrors) =>
                      validationErrors.ValidationErrors.Aggregate(current1, (current, validationError) =>
-                     current + (Environment.NewLine + $"Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}")));
+                     current + (Environment.NewLine + "Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage)));
 
                 var fail = new Exception(msg, dbEx);
                 throw fail;
             }
         }
 
-        public IQueryable<T> Table => Entities;
+        public IQueryable<T> Table {
+            get
+            {
+                return Entities;
+            }
+        }
 
-        public IQueryable<T> TableUntracked => Entities.AsNoTracking();
+        public IQueryable<T> TableUntracked
+        {
+            get
+            {
+                return Entities.AsNoTracking();
+            }
+        }
 
         public void Update(T entity)
         {
             try
             {
                 if (entity == null)
-                    throw new ArgumentNullException(nameof(entity));
+                {
+                    throw new Exception("There was an error");
+                    //throw new ArgumentNullException(nameof(entity));
+                }
+                
+
                 if (_context.Entry(entity).State == EntityState.Detached)
                 {
                     var alreadyAttached = Entities.Local.FirstOrDefault(x => x.Id == entity.Id);
@@ -106,7 +135,7 @@ namespace Data
             {
                 var msg = dbEx.EntityValidationErrors.Aggregate(string.Empty, (current1, validationErrors) =>
                     validationErrors.ValidationErrors.Aggregate(current1, (current, validationError) =>
-                    current + (Environment.NewLine + $"Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}")));
+                    current + (Environment.NewLine + "Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage)));
 
                 var fail = new Exception(msg, dbEx);
                 throw fail;

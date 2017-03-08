@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Core</RootNamespace>
     <AssemblyName>Core</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -32,6 +32,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.Composition.registration" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,7 +46,16 @@
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Domains\Account.cs" />
+    <Compile Include="Domains\Rate.cs" />
+    <Compile Include="Domains\Category.cs" />
     <Compile Include="Domains\ErrorLogs.cs" />
+    <Compile Include="Domains\Event.cs" />
+    <Compile Include="Domains\EventNeed.cs" />
+    <Compile Include="Domains\EventRequest.cs" />
+    <Compile Include="Domains\EventRequestNegotiation.cs" />
+    <Compile Include="Domains\Organization.cs" />
+    <Compile Include="Domains\Performer.cs" />
+    <Compile Include="Enumerations.cs" />
     <Compile Include="Helpers\Security\SecurityHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

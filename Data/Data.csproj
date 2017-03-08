@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Data</RootNamespace>
     <AssemblyName>Data</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -56,11 +56,19 @@
   <ItemGroup>
     <Compile Include="AppContext.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="Mappings\RateMap.cs" />
+    <Compile Include="Mappings\PerformerMap.cs" />
+    <Compile Include="Mappings\OrganizationMap.cs" />
+    <Compile Include="Mappings\EventRequestNegotiationMap.cs" />
+    <Compile Include="Mappings\EventRequestMap.cs" />
+    <Compile Include="Mappings\EventNeedMap.cs" />
+    <Compile Include="Mappings\EventMap.cs" />
+    <Compile Include="Mappings\CategoryMap.cs" />
     <Compile Include="Mappings\AccountMap.cs" />
     <Compile Include="Mappings\ErrorLogMap.cs" />
-    <Compile Include="Migrations\201609061509177_InitialCreate.cs" />
-    <Compile Include="Migrations\201609061509177_InitialCreate.Designer.cs">
-      <DependentUpon>201609061509177_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201703080724218_InitialCreate.cs" />
+    <Compile Include="Migrations\201703080724218_InitialCreate.Designer.cs">
+      <DependentUpon>201703080724218_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,8 +84,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201609061509177_InitialCreate.resx">
-      <DependentUpon>201609061509177_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703080724218_InitialCreate.resx">
+      <DependentUpon>201703080724218_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

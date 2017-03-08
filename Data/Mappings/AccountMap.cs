@@ -23,6 +23,15 @@ namespace Data.Mappings
 
             Property(c => c.PasswordSalt)
                 .IsRequired();
+
+            // navigational properties
+            HasMany(x => x.Performers)
+                .WithRequired(x => x.Account)
+                .HasForeignKey(x => x.AccountId);
+
+            HasMany(x => x.Organizations)
+                .WithRequired(x => x.Account)
+                .HasForeignKey(x => x.AccountId);
         }
     }
 }

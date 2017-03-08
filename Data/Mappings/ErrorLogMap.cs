@@ -35,7 +35,8 @@ namespace Data.Mappings
                 .IsRequired();
 
             Property(c => c.LogDate)
-                .IsRequired();
+                .IsRequired()
+                .HasColumnType("date");
         }
     }
 }

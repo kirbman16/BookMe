@@ -11,5 +11,9 @@ namespace Core.Domains
         public virtual string Username { get; set; }
         public virtual string PasswordHash { get; set; }
         public virtual string PasswordSalt { get; set; }
+
+
+        public virtual ICollection<Performer> Performers { get; set; }
+        public virtual ICollection<Organization> Organizations { get; set; }
     }
 }
